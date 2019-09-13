@@ -185,7 +185,7 @@ Row 1 has [[{:name=>"Grape Drink", :pieces=>1}, {:name=>"Orange Drink", :pieces=
 In the following lab, we've provided you a method called `directors_database`
 which provides a bunch of information about movies and their directors. Your
 job is to take the NDS returned by `directors_database` and learn about its
-structure.
+structure. You'll write your solution in `lib/nds_explore.rb`.
 
 ## Conclusion
 

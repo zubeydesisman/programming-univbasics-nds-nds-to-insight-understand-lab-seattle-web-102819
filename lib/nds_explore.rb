@@ -1,13 +1,11 @@
-def test_method
-  'bears'
+require 'directors_database'
+# Call the method directors_database to retrieve the NDS
+
+def pretty_print_nds
+  nds = directors_database
+  # Change the code below to pretty print the nds with pp
+  nil
 end
 
-class ExampleClass
-  def self.class_test
-    'in my yard'
-  end
-
-  def instance_test
-    'seriously'
-  end
+def print_first_directores_movie_title
 end
