@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'pp'
 
 describe 'Directors Database' do
   it 'Pretty prints directors_database' do
