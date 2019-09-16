@@ -95,14 +95,16 @@ Output:
 As we can see, `pp` has tried to make our structures easier to read for humans.
 It doesn't have much to offer when dealing with simple data, but we start to
 see its power with NDS'. Let's focus on the `vm` output. We'll just work with
-the first few lines. We'll edit this text by hand to help make it more
-readable and leave a few comments
+the first few lines.
+
+It's a good idea to save the outpout of `pp` into a file. Then we can use
+our editor to reformat the output to help us get a handle on things.
 
 ```text
 [ # outermost structures is an Array
   [ #oh, but another one immediately, so it's an AoA
     [ # yet another!? It's an AoAoA where the inner Arrays are full of ..
-      {:name=>"Vanilla Cookies", :pieces=>3}, # Hash
+      {:name=>"Vanilla Cookies", :pieces=>3}, # Hashes with two keys!
       {:name=>"Pistachio Cookies", :pieces=>3}, # and another Hash
       {:name=>"Chocolate Cookies", :pieces=>3}, # and another Hash
       {:name=>"Chocolate Chip Cookies", :pieces=>3} # and another Hash
@@ -118,9 +120,12 @@ know from other lessons, we have an AoAoAoH with keys `:name` and `:pieces`.
 
 ## Print Out a Complex Nested Data Structure Using Iteration
 
-We can use what we just learned to help guide us to write some Ruby code to
-help us understand our structure. We're going to use simple iteration to print
-out a "picture" of our NDS.
+We can use what we just learned to help guide us to write some "scratch" Ruby
+code to help us understand our structure. It's important to realize that we
+don't just write code to _solve_ problems, sometimes we need to write code to
+_understand how we might solve_ a problem.
+
+We're going to use simple iteration to print out a "picture" of our NDS.
 
 Here's some simple nested `while...do...end` statements used to reveal the
 structure of a nested data structure:
