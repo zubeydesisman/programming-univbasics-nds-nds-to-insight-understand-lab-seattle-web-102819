@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'Directors Database' do
   it 'Pretty prints directors_database' do
-    expect { pretty_print_nds }.not_to output(directors_database).to_stdout
+    expect { pretty_print_nds }.to output(directors_database).to_stdout
   end
 
   it 'Iterates over Spielberg’s movies and prints out their names' do
