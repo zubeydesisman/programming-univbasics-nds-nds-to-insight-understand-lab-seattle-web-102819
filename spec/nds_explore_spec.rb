@@ -1,4 +1,5 @@
 require 'spec_helper'
+require_relative '../lib/directors_database'
 
 describe 'When using "pp" to display complex data structures,' do
   it 'pretty_print_nds prints the nds it is passed using the build-in pretty-printer' do
