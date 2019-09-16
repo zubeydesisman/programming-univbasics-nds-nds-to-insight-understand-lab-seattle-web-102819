@@ -147,7 +147,7 @@ while row_index < vm.length do
 
     inner_index = 0
     while inner_index < inner_len do
-      puts "\t\t (#{coord}, #{inner_len}) is: #{vm[row_index][column_index][inner_index]}"
+      puts "\t\t (#{coord}, #{inner_index}) is: #{vm[row_index][column_index][inner_index]}"
       inner_index += 1
     end
 
@@ -158,31 +158,33 @@ while row_index < vm.length do
 end
 ```
 
+Produces:
+
 ```text
 Row 0 has [[{:name=>"Vanilla Cookies", :pieces=>3}, {:name=>"Pistachio Cookies", :pieces=>3}, {:name=>"Chocolate Cookies", :pieces=>3}, {:name=>"Chocolate Chip Cookies", :pieces=>3}], [{:name=>"Tooth-Melters", :pieces=>12}, {:name=>"Tooth-Destroyers", :pieces=>12}, {:name=>"Enamel Eaters", :pieces=>12}, {:name=>"Dentist's Nighmare", :pieces=>20}], [{:name=>"Gummy Sour Apple", :pieces=>3}, {:name=>"Gummy Apple", :pieces=>5}, {:name=>"Gummy Moldy Apple", :pieces=>1}]] columns
 	Coordinate [0, 0] points to an Array of length 4
-		 (0, 0, 4) is: {:name=>"Vanilla Cookies", :pieces=>3}
-		 (0, 0, 4) is: {:name=>"Pistachio Cookies", :pieces=>3}
-		 (0, 0, 4) is: {:name=>"Chocolate Cookies", :pieces=>3}
-		 (0, 0, 4) is: {:name=>"Chocolate Chip Cookies", :pieces=>3}
+		 (0, 0, 0) is: {:name=>"Vanilla Cookies", :pieces=>3}
+		 (0, 0, 1) is: {:name=>"Pistachio Cookies", :pieces=>3}
+		 (0, 0, 2) is: {:name=>"Chocolate Cookies", :pieces=>3}
+		 (0, 0, 3) is: {:name=>"Chocolate Chip Cookies", :pieces=>3}
 	Coordinate [0, 1] points to an Array of length 4
-		 (0, 1, 4) is: {:name=>"Tooth-Melters", :pieces=>12}
-		 (0, 1, 4) is: {:name=>"Tooth-Destroyers", :pieces=>12}
-		 (0, 1, 4) is: {:name=>"Enamel Eaters", :pieces=>12}
-		 (0, 1, 4) is: {:name=>"Dentist's Nighmare", :pieces=>20}
+		 (0, 1, 0) is: {:name=>"Tooth-Melters", :pieces=>12}
+		 (0, 1, 1) is: {:name=>"Tooth-Destroyers", :pieces=>12}
+		 (0, 1, 2) is: {:name=>"Enamel Eaters", :pieces=>12}
+		 (0, 1, 3) is: {:name=>"Dentist's Nighmare", :pieces=>20}
 	Coordinate [0, 2] points to an Array of length 3
-		 (0, 2, 3) is: {:name=>"Gummy Sour Apple", :pieces=>3}
-		 (0, 2, 3) is: {:name=>"Gummy Apple", :pieces=>5}
-		 (0, 2, 3) is: {:name=>"Gummy Moldy Apple", :pieces=>1}
+		 (0, 2, 0) is: {:name=>"Gummy Sour Apple", :pieces=>3}
+		 (0, 2, 1) is: {:name=>"Gummy Apple", :pieces=>5}
+		 (0, 2, 2) is: {:name=>"Gummy Moldy Apple", :pieces=>1}
 Row 1 has [[{:name=>"Grape Drink", :pieces=>1}, {:name=>"Orange Drink", :pieces=>1}, {:name=>"Pineapple Drink", :pieces=>1}], [{:name=>"Mints", :pieces=>13}, {:name=>"Curiously Toxic Mints", :pieces=>1000}, {:name=>"US Mints", :pieces=>99}]] columns
 	Coordinate [1, 0] points to an Array of length 3
-		 (1, 0, 3) is: {:name=>"Grape Drink", :pieces=>1}
-		 (1, 0, 3) is: {:name=>"Orange Drink", :pieces=>1}
-		 (1, 0, 3) is: {:name=>"Pineapple Drink", :pieces=>1}
+		 (1, 0, 0) is: {:name=>"Grape Drink", :pieces=>1}
+		 (1, 0, 1) is: {:name=>"Orange Drink", :pieces=>1}
+		 (1, 0, 2) is: {:name=>"Pineapple Drink", :pieces=>1}
 	Coordinate [1, 1] points to an Array of length 3
-		 (1, 1, 3) is: {:name=>"Mints", :pieces=>13}
-		 (1, 1, 3) is: {:name=>"Curiously Toxic Mints", :pieces=>1000}
-		 (1, 1, 3) is: {:name=>"US Mints", :pieces=>99}
+		 (1, 1, 0) is: {:name=>"Mints", :pieces=>13}
+		 (1, 1, 1) is: {:name=>"Curiously Toxic Mints", :pieces=>1000}
+		 (1, 1, 2) is: {:name=>"US Mints", :pieces=>99}
 ```
 
 ## Lab
