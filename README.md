@@ -21,20 +21,29 @@ NDS you have to work with.
 
 Let's suppose someone gave you a Ruby file and all it had in it was this:
 
-```ruby
+```text
 vm = [[[{:name=>"Vanilla Cookies", :pieces=>3}, {:name=>"Pistachio Cookies", :pieces=>3}, {:name=>"Chocolate Cookies", :pieces=>3}, {:name=>"Chocolate Chip Cookies", :pieces=>3}], [{:name=>"Tooth-Melters", :pieces=>12}, {:name=>"Tooth-Destroyers", :pieces=>12}, {:name=>"Enamel Eaters", :pieces=>12}, {:name=>"Dentist's Nighmare", :pieces=>20}], [{:name=>"Gummy Sour Apple", :pieces=>3}, {:name=>"Gummy Apple", :pieces=>5}, {:name=>"Gummy Moldy Apple", :pieces=>1}]], [[{:name=>"Grape Drink", :pieces=>1}, {:name=>"Orange Drink", :pieces=>1}, {:name=>"Pineapple Drink", :pieces=>1}], [{:name=>"Mints", :pieces=>13}, {:name=>"Curiously Toxic Mints", :pieces=>1000}, {:name=>"US Mints", :pieces=>99}]]]
 ```
 
 We can paste this code into IRB and `vm` will be successfully assigned. There's
 nothing wrong with this code. Ruby can read it easily. But whoever left us this
-file forgot that code has to be understood by humans too.
+file forgot that code has to be understood by humans too. Because it's so
+_dense_ our minds actively start finding ways to _not_ figure out what it says.
+Our brains start suggesting we skip over this monster NDS. In our experience, one
+sure way to have a hard time writing code is to "skip over" and "not read" it.
+
+So what can we do? Programming (ta-dah!) to the rescue (again).
 
 We can get a human-friendly version of this output by using the [`pp`][pp], or
-"pretty-print" library provided by Ruby. In order to "activate" `pp`, we have
-to add a `require` statement at the top of the file. Ruby ships with lots of
+"pretty-print," library provided by Ruby. In order to "activate" `pp`, we have
+to add a `require` statement at the top of the file. 
+
+Why do we have to add a `require` statement? Ruby ships with lots of
 features by default. Some of these can slow Ruby down. By default, Ruby only
 "activates" the most-commonly used methods. Some of its features are inactive
-by default and we say we want to "activate" them by using `require`.
+by default and we say we want to "activate" them by using `require`. In time,
+you'll want to use other libraries (debugging libraries, network libraries, etc.).
+You'll have to `require` them all at some point because they're not "on by default."
 
 Customarily, `require` statements are stacked at the top of the file.
 
@@ -44,7 +53,7 @@ require 'pp'
 vm = [[[{:name=>"Vanilla Cookies", :pieces=>3}, {:name=>"Pistachio Cookies", :pieces=>3}, {:name=>"Chocolate Cookies", :pieces=>3}, {:name=>"Chocolate Chip Cookies", :pieces=>3}], [{:name=>"Tooth-Melters", :pieces=>12}, {:name=>"Tooth-Destroyers", :pieces=>12}, {:name=>"Enamel Eaters", :pieces=>12}, {:name=>"Dentist's Nighmare", :pieces=>20}], [{:name=>"Gummy Sour Apple", :pieces=>3}, {:name=>"Gummy Apple", :pieces=>5}, {:name=>"Gummy Moldy Apple", :pieces=>1}]], [[{:name=>"Grape Drink", :pieces=>1}, {:name=>"Orange Drink", :pieces=>1}, {:name=>"Pineapple Drink", :pieces=>1}], [{:name=>"Mints", :pieces=>13}, {:name=>"Curiously Toxic Mints", :pieces=>1000}, {:name=>"US Mints", :pieces=>99}]]]
 ```
 
-In this code we have gained the method `pp`. We can now `pp` all sorts of
+In this code we can now run the `pp` method. We can now `pp` all sorts of
 things:
 
 ```ruby
@@ -92,13 +101,16 @@ Output:
    {:name=>"US Mints", :pieces=>99}]]]
 ```
 
-As we can see, `pp` has tried to make our structures easier to read for humans.
+As we can see, `pp` has tried to make our structures easier to read _for humans_.
 It doesn't have much to offer when dealing with simple data, but we start to
 see its power with NDS'. Let's focus on the `vm` output. We'll just work with
 the first few lines.
 
 It's a good idea to save the outpout of `pp` into a file. Then we can use
-our editor to reformat the output to help us get a handle on things.
+our editor to reformat the output to help us get a handle on things. You
+can copy and paste `pp` output from the terminal into a new tab in your
+editor. We've added some comments to show our thought process as we looked
+at the `pp`'d NDS.
 
 ```text
 [ # outermost structures is an Array
@@ -115,8 +127,7 @@ our editor to reformat the output to help us get a handle on things.
 ```
 
 From the above, we know a lot about what we're working with. As you already
-know from other lessons, we have an AoAoAoH with keys `:name` and `:pieces`.
-
+know from previous lessons, we have an AoAoAoH with keys `:name` and `:pieces`.
 
 ## Print Out a Complex Nested Data Structure Using Iteration
 
@@ -125,10 +136,17 @@ code to help us understand our structure. It's important to realize that we
 don't just write code to _solve_ problems, sometimes we need to write code to
 _understand how we might solve_ a problem.
 
+While the Flatiron School labs give you a "green light" when you do whatever
+you wanted us to do, in the real world, the only metric of success is _insight_.
+_Insights_ that you give to yourself or present to your boss are the only
+_real_ outputs that matter, when you think about it. So it shouldn't be
+odd to think "I'm going to learn more about this NDS with some code that I
+wrote."
+
 We're going to use simple iteration to print out a "picture" of our NDS.
 
 Here's some simple nested `while...do...end` statements used to reveal the
-structure of a nested data structure:
+structure of the NDS:
 
 ```ruby
 vm = [[[{:name=>"Vanilla Cookies", :pieces=>3}, {:name=>"Pistachio Cookies", :pieces=>3}, {:name=>"Chocolate Cookies", :pieces=>3}, {:name=>"Chocolate Chip Cookies", :pieces=>3}], [{:name=>"Tooth-Melters", :pieces=>12}, {:name=>"Tooth-Destroyers", :pieces=>12}, {:name=>"Enamel Eaters", :pieces=>12}, {:name=>"Dentist's Nighmare", :pieces=>20}], [{:name=>"Gummy Sour Apple", :pieces=>3}, {:name=>"Gummy Apple", :pieces=>5}, {:name=>"Gummy Moldy Apple", :pieces=>1}]], [[{:name=>"Grape Drink", :pieces=>1}, {:name=>"Orange Drink", :pieces=>1}, {:name=>"Pineapple Drink", :pieces=>1}], [{:name=>"Mints", :pieces=>13}, {:name=>"Curiously Toxic Mints", :pieces=>1000}, {:name=>"US Mints", :pieces=>99}]]]
@@ -187,12 +205,25 @@ Row 1 has [[{:name=>"Grape Drink", :pieces=>1}, {:name=>"Orange Drink", :pieces=
 		 (1, 1, 2) is: {:name=>"US Mints", :pieces=>99}
 ```
 
+With this information we should be able to use `[]` and `Array` and `Hash` methods
+to fetch data that we need. We'll do that fetching in the next lab. Our focus
+in this lab will be to practice learning how to learn about provided NDS'.
+
 ## Lab
 
 In the following lab, we've provided you a method called `directors_database`
 which provides a bunch of information about movies and their directors. Your
 job is to take the NDS returned by `directors_database` and learn about its
 structure. You'll write your solution in `lib/nds_explore.rb`.
+
+We've stored the database in a lightly-encrypted format. We've done this to
+help you learn how to learn about an NDS that's too complex for a human mind
+to easily grasp. This will be part of your expectations in the "real world."
+
+![Training](https://media.giphy.com/media/E77YW2DDl3cMo/giphy.gif)
+
+Think of the challenge like Obi-Wan and young Luke: by training with the blast
+sheild over your eyes, we're teaching you to feel the Force.
 
 ## Conclusion
 
