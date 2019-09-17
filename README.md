@@ -2,6 +2,7 @@
 
 ## Learning Goals
 
+- Identify complex nested data structures
 - Print out a complex nested data structure using the `pp` library
 - Print out a complex nested data structure using iteration
 
@@ -17,7 +18,7 @@ together, you're going to have a hard time writing code to process the NDS into
 _insight_. This lesson provides two reliable techniques for getting to know the
 NDS you have to work with.
 
-## Print out a complex nested data structure using the `pp` library
+## Identify Complex Nested Data Structures
 
 Let's suppose someone gave you a Ruby file and all it had in it was this:
 
@@ -30,9 +31,12 @@ nothing wrong with this code. Ruby can read it easily. But whoever left us this
 file forgot that code has to be understood by humans too. Because it's so
 _dense_ our minds actively start finding ways to _not_ figure out what it says.
 Our brains start suggesting we skip over this monster NDS. In our experience, one
-sure way to have a hard time writing code is to "skip over" and "not read" it.
+sure way to have a hard time reading and writing code is to "skip over" and "not
+read" it.
 
-So what can we do? Programming (ta-dah!) to the rescue (again).
+So what can we do? Programming (ta-dah!) to the rescue (again)!
+
+## Print Out a Complex Nested Data Structure Using the `pp` Library
 
 We can get a human-friendly version of this output by using the [`pp`][pp], or
 "pretty-print," library provided by Ruby. In order to "activate" `pp`, we have
@@ -214,7 +218,7 @@ in this lab will be to practice learning how to learn about provided NDS'.
 In the following lab, we've provided you a method called `directors_database`
 which provides a bunch of information about movies and their directors. Your
 job is to take the NDS returned by `directors_database` and learn about its
-structure. You'll write your solution in `lib/nds_explore.rb`.
+structure using `pp`. You'll write your solution in `lib/nds_explore.rb`.
 
 We've stored the database in a lightly-encrypted format. We've done this to
 help you learn how to learn about an NDS that's too complex for a human mind
@@ -224,6 +228,10 @@ to easily grasp. This will be part of your expectations in the "real world."
 
 Think of the challenge like Obi-Wan and young Luke: by training with the blast
 sheild over your eyes, we're teaching you to feel the Force.
+
+Now that we can see an easier-to-read data structure, we'll build a method that
+prints out the first director's movie data in the `print_first_directors_movie_titles`
+method.
 
 ## Conclusion
 
