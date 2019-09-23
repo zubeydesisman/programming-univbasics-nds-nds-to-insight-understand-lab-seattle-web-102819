@@ -18,6 +18,13 @@ together, you're going to have a hard time writing code to process the NDS into
 _insight_. This lesson provides two reliable techniques for getting to know the
 NDS you have to work with.
 
+Here, we're going to follow our first step on the strategy we covered in the 
+last lesson:
+
+> 1. Understand the NDS
+>   * Pretty-Print NDS with pp
+>   * Home-Grown Pretty-Print Arrays
+
 ## Identify Complex Nested Data Structures
 
 Let's suppose someone gave you a Ruby file and all it had in it was this:
