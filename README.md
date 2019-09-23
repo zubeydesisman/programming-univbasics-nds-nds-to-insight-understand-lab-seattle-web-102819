@@ -37,38 +37,32 @@ We can paste this code into IRB and `vm` will be successfully assigned. There's
 nothing wrong with this code. Ruby can read it easily. But whoever left us this
 file forgot that code has to be understood by humans too. Because it's so
 _dense_ our minds actively start finding ways to _not_ figure out what it says.
-Our brains start suggesting we skip over this monster NDS. In our experience, one
-sure way to have a hard time reading and writing code is to "skip over" and "not
-read" it.
+Our brains start suggesting we skip over this monster NDS. In our experience,
+one sure way to have a hard time reading and writing code that uses an NDS is
+to skim it and not read it.
 
-So what can we do? Programming (ta-dah!) to the rescue (again)!
+So what can we do to help our poor brains out? Ruby (ta-dah!) to the rescue
+(again)!
 
 ## Print Out a Complex Nested Data Structure Using the `pp` Library
 
 We can get a human-friendly version of this output by using the [`pp`][pp], or
 "pretty-print," library provided by Ruby. In order to "activate" `pp`, we have
-to add a `require` statement at the top of the file. 
+to add a `require` statement at the top of the file.
 
 Why do we have to add a `require` statement? Ruby ships with lots of
 features by default. Some of these can slow Ruby down. By default, Ruby only
 "activates" the most-commonly used methods. Some of its features are inactive
 by default and we say we want to "activate" them by using `require`. In time,
 you'll want to use other libraries (debugging libraries, network libraries, etc.).
-You'll have to `require` them all at some point because they're not "on by default."
 
 Customarily, `require` statements are stacked at the top of the file.
 
 ```ruby
 require 'pp'
 
+# Our NDS
 vm = [[[{:name=>"Vanilla Cookies", :pieces=>3}, {:name=>"Pistachio Cookies", :pieces=>3}, {:name=>"Chocolate Cookies", :pieces=>3}, {:name=>"Chocolate Chip Cookies", :pieces=>3}], [{:name=>"Tooth-Melters", :pieces=>12}, {:name=>"Tooth-Destroyers", :pieces=>12}, {:name=>"Enamel Eaters", :pieces=>12}, {:name=>"Dentist's Nighmare", :pieces=>20}], [{:name=>"Gummy Sour Apple", :pieces=>3}, {:name=>"Gummy Apple", :pieces=>5}, {:name=>"Gummy Moldy Apple", :pieces=>1}]], [[{:name=>"Grape Drink", :pieces=>1}, {:name=>"Orange Drink", :pieces=>1}, {:name=>"Pineapple Drink", :pieces=>1}], [{:name=>"Mints", :pieces=>13}, {:name=>"Curiously Toxic Mints", :pieces=>1000}, {:name=>"US Mints", :pieces=>99}]]]
-```
-
-In this code we can now run the `pp` method. We can now `pp` all sorts of
-things:
-
-```ruby
-require 'pp'
 
 # Some simple things to pp
 a_privateer = ["John", "Paul", "Jones"]
@@ -76,9 +70,6 @@ an_integer = 42
 
 ## pp something nested, but simple
 a_o_a = [ [1,2,3], [4,5,6], [7,8,9]]
-
-## pp something nested, but complex
-vm = [[[{:name=>"Vanilla Cookies", :pieces=>3}, {:name=>"Pistachio Cookies", :pieces=>3}, {:name=>"Chocolate Cookies", :pieces=>3}, {:name=>"Chocolate Chip Cookies", :pieces=>3}], [{:name=>"Tooth-Melters", :pieces=>12}, {:name=>"Tooth-Destroyers", :pieces=>12}, {:name=>"Enamel Eaters", :pieces=>12}, {:name=>"Dentist's Nighmare", :pieces=>20}], [{:name=>"Gummy Sour Apple", :pieces=>3}, {:name=>"Gummy Apple", :pieces=>5}, {:name=>"Gummy Moldy Apple", :pieces=>1}]], [[{:name=>"Grape Drink", :pieces=>1}, {:name=>"Orange Drink", :pieces=>1}, {:name=>"Pineapple Drink", :pieces=>1}], [{:name=>"Mints", :pieces=>13}, {:name=>"Curiously Toxic Mints", :pieces=>1000}, {:name=>"US Mints", :pieces=>99}]]]
 
 pp a_privateer
 pp an_integer
@@ -117,11 +108,9 @@ It doesn't have much to offer when dealing with simple data, but we start to
 see its power with NDS'. Let's focus on the `vm` output. We'll just work with
 the first few lines.
 
-It's a good idea to save the outpout of `pp` into a file. Then we can use
-our editor to reformat the output to help us get a handle on things. You
-can copy and paste `pp` output from the terminal into a new tab in your
-editor. We've added some comments to show our thought process as we looked
-at the `pp`'d NDS.
+It's a good idea to save the outpout of `pp` into a file. Then we can use our
+editor to reformat the output to help us get a handle on things. We've added
+some comments to show our thought process as we looked at the `pp`'d NDS.
 
 ```text
 [ # outermost structures is an Array
@@ -131,33 +120,33 @@ at the `pp`'d NDS.
       {:name=>"Pistachio Cookies", :pieces=>3}, # and another Hash
       {:name=>"Chocolate Cookies", :pieces=>3}, # and another Hash
       {:name=>"Chocolate Chip Cookies", :pieces=>3} # and another Hash
-    ], # end of inner hash
-    [
+    ], # end of inner array
+    [ #...and so on...
       {:name=>"Tooth-Melters", :pieces=>12},
      {:name=>"Tooth-Destroyers", :pieces=>12},
 ```
 
-From the above, we know a lot about what we're working with. As you already
-know from previous lessons, we have an AoAoAoH with keys `:name` and `:pieces`.
+From the above, we've learned a lot about what we're working with. As you
+already know from previous lessons, we have an AoAoAoH with keys `:name` and
+`:pieces`.
 
 ## Print Out a Complex Nested Data Structure Using Iteration
 
 We can use what we just learned to help guide us to write some "scratch" Ruby
 code to help us understand our structure. It's important to realize that we
 don't just write code to _solve_ problems, sometimes we need to write code to
-_understand how we might solve_ a problem.
-
-While the Flatiron School labs give you a "green light" when you do whatever
-you wanted us to do, in the real world, the only metric of success is _insight_.
-_Insights_ that you give to yourself or present to your boss are the only
-_real_ outputs that matter, when you think about it. So it shouldn't be
-odd to think "I'm going to learn more about this NDS with some code that I
-wrote."
-
-We're going to use simple iteration to print out a "picture" of our NDS.
+_understand how we might solve_ a problem. Sometimes pretty-printing with `pp`
+is just simply not enough.
 
 Here's some simple nested `while...do...end` statements used to reveal the
-structure of the NDS:
+structure of the NDS. Writing this looping code was greatly helped by `pp`'s
+output as guidance:
+
+> **Reflect and Recall**: Remember, we taught some basic loops to memorize in a
+> previous lesson, the "Nested Iteration Lab." If reading this `while...end`
+> code feels like writing an alien newspaper, go back and review those
+> materials. The remaining labs will not stop using this pattern and you need
+> to be strong as granite with this skill.
 
 ```ruby
 vm = [[[{:name=>"Vanilla Cookies", :pieces=>3}, {:name=>"Pistachio Cookies", :pieces=>3}, {:name=>"Chocolate Cookies", :pieces=>3}, {:name=>"Chocolate Chip Cookies", :pieces=>3}], [{:name=>"Tooth-Melters", :pieces=>12}, {:name=>"Tooth-Destroyers", :pieces=>12}, {:name=>"Enamel Eaters", :pieces=>12}, {:name=>"Dentist's Nighmare", :pieces=>20}], [{:name=>"Gummy Sour Apple", :pieces=>3}, {:name=>"Gummy Apple", :pieces=>5}, {:name=>"Gummy Moldy Apple", :pieces=>1}]], [[{:name=>"Grape Drink", :pieces=>1}, {:name=>"Orange Drink", :pieces=>1}, {:name=>"Pineapple Drink", :pieces=>1}], [{:name=>"Mints", :pieces=>13}, {:name=>"Curiously Toxic Mints", :pieces=>1000}, {:name=>"US Mints", :pieces=>99}]]]
@@ -216,9 +205,9 @@ Row 1 has [[{:name=>"Grape Drink", :pieces=>1}, {:name=>"Orange Drink", :pieces=
 		 (1, 1, 2) is: {:name=>"US Mints", :pieces=>99}
 ```
 
-With this information we should be able to use `[]` and `Array` and `Hash` methods
-to fetch data that we need. We'll do that fetching in the next lab. Our focus
-in this lab will be to practice learning how to learn about provided NDS'.
+With this looping code and pretty-printing, we should see how to access all
+those `:pieces` keys that we can sum together to create the total count of
+pieces in the vending machine.  We'll do that work in the next lab. 
 
 ## Lab
 
@@ -234,10 +223,10 @@ to easily grasp. This will be part of your expectations in the "real world."
 ![Training](https://media.giphy.com/media/E77YW2DDl3cMo/giphy.gif)
 
 Think of the challenge like Obi-Wan and young Luke: by training with the blast
-sheild over your eyes, we're teaching you to feel the Force.
+shield over your eyes, we're teaching you to feel the Force.
 
-Now that we can see an easier-to-read data structure, we'll build a method that
-prints out the first director's movie data in the `print_first_directors_movie_titles`
+Once you understand the data structure, you'll build a method that prints out
+the first director's movie data in the `print_first_directors_movie_titles`
 method.
 
 ## Conclusion
