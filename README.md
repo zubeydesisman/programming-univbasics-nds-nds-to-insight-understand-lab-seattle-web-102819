@@ -36,10 +36,10 @@ vm = [[[{:name=>"Vanilla Cookies", :price=>3}, {:name=>"Pistachio Cookies", :pri
 We can paste this code into IRB and `vm` will be successfully assigned. There's
 nothing wrong with this code. Ruby can read it easily. But whoever left us this
 file forgot that code has to be understood by humans too. Because it's so
-_dense_ our minds actively start finding ways to _not_ figure out what it says.
-Our brains start suggesting we skip over this monster NDS. In our experience,
-one sure way to have a hard time reading and writing code that uses an NDS is
-to skim it and not read it.
+_dense_, our minds actively start finding ways to _not_ read what it says.  Our
+brains start suggesting we skip over this monster NDS. In our experience, one
+sure way to have a hard time reading and writing code that uses an NDS is to
+skim it and not read it.
 
 So what can we do to help our poor brains out? Ruby (ta-dah!) to the rescue
 (again)!
@@ -50,11 +50,11 @@ We can get a human-friendly version of this output by using the [`pp`][pp], or
 "pretty-print," library provided by Ruby. In order to "activate" `pp`, we have
 to add a `require` statement at the top of the file.
 
-Why do we have to add a `require` statement? Ruby ships with lots of
-features by default. Some of these can slow Ruby down. By default, Ruby only
-"activates" the most-commonly used methods. Some of its features are inactive
-by default and we say we want to "activate" them by using `require`. In time,
-you'll want to use other libraries (debugging libraries, network libraries, etc.).
+Why do we have to add a `require` statement? Ruby ships with lots of features
+by default. Some of these can slow Ruby down. By default, Ruby only "activates"
+the most-commonly-used features. Some of its features are inactive by default
+and we say we want to "activate" them by using `require`. In time, you'll want
+to use other libraries (debugging libraries, network libraries, etc.).
 
 Customarily, `require` statements are stacked at the top of the file.
 
@@ -108,12 +108,12 @@ It doesn't have much to offer when dealing with simple data, but we start to
 see its power with NDS'. Let's focus on the `vm` output. We'll just work with
 the first few lines.
 
-It's a good idea to save the outpout of `pp` into a file. Then we can use our
+It's a good idea to save the output of `pp` into a file. Then we can use our
 editor to reformat the output to help us get a handle on things. We've added
 some comments to show our thought process as we looked at the `pp`'d NDS.
 
 ```text
-[ # outermost structures is an Array
+[ # outermost structure is an Array
   [ #oh, but another one immediately, so it's an AoA
     [ # yet another!? It's an AoAoA where the inner Arrays are full of ..
       {:name=>"Vanilla Cookies", :price=>3}, # Hashes with two keys!
@@ -211,10 +211,10 @@ the snacks in the vending machine.  We'll do that work in the next lab.
 
 ## Lab
 
-In the following lab, we've provided you a method called `directors_database`
-which provides a bunch of information about movies and their directors. Your
-job is to take the NDS returned by `directors_database` and learn about its
-structure using `pp`. You'll write your solution in `lib/nds_explore.rb`.
+In the lab, we've provided you a method called `directors_database` which
+provides a bunch of information about movies and their directors. Your job is
+to take the NDS returned by `directors_database` and learn about its structure
+using `pp`. You'll write your solution in `lib/nds_explore.rb`.
 
 We've stored the database in a lightly-encrypted format. We've done this to
 help you learn how to learn about an NDS that's too complex for a human mind
