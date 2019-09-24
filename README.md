@@ -128,7 +128,7 @@ some comments to show our thought process as we looked at the `pp`'d NDS.
 
 From the above, we've learned a lot about what we're working with. As you
 already know from previous lessons, we have an AoAoAoH with keys `:name` and
-`:pieces`.
+`:price`.
 
 ## Print Out a Complex Nested Data Structure Using Iteration
 
@@ -206,8 +206,8 @@ Row 1 has [[{:name=>"Grape Drink", :price=>1}, {:name=>"Orange Drink", :price=>1
 ```
 
 With this looping code and pretty-printing, we should see how to access all
-those `:pieces` keys that we can sum together to create the total count of
-pieces in the vending machine.  We'll do that work in the next lab. 
+those `:price` keys that we can sum together to create the total value of all
+the snacks in the vending machine.  We'll do that work in the next lab. 
 
 ## Lab
 
