@@ -30,16 +30,16 @@ last lesson:
 Let's suppose someone gave you a Ruby file and all it had in it was this:
 
 ```text
-vm = [[[{:name=>"Vanilla Cookies", :pieces=>3}, {:name=>"Pistachio Cookies", :pieces=>3}, {:name=>"Chocolate Cookies", :pieces=>3}, {:name=>"Chocolate Chip Cookies", :pieces=>3}], [{:name=>"Tooth-Melters", :pieces=>12}, {:name=>"Tooth-Destroyers", :pieces=>12}, {:name=>"Enamel Eaters", :pieces=>12}, {:name=>"Dentist's Nighmare", :pieces=>20}], [{:name=>"Gummy Sour Apple", :pieces=>3}, {:name=>"Gummy Apple", :pieces=>5}, {:name=>"Gummy Moldy Apple", :pieces=>1}]], [[{:name=>"Grape Drink", :pieces=>1}, {:name=>"Orange Drink", :pieces=>1}, {:name=>"Pineapple Drink", :pieces=>1}], [{:name=>"Mints", :pieces=>13}, {:name=>"Curiously Toxic Mints", :pieces=>1000}, {:name=>"US Mints", :pieces=>99}]]]
+vm = [[[{:name=>"Vanilla Cookies", :price=>3}, {:name=>"Pistachio Cookies", :price=>3}, {:name=>"Chocolate Cookies", :price=>3}, {:name=>"Chocolate Chip Cookies", :price=>3}], [{:name=>"Tooth-Melters", :price=>12}, {:name=>"Tooth-Destroyers", :price=>12}, {:name=>"Enamel Eaters", :price=>12}, {:name=>"Dentist's Nightmare", :price=>20}], [{:name=>"Gummy Sour Apple", :price=>3}, {:name=>"Gummy Apple", :price=>5}, {:name=>"Gummy Moldy Apple", :price=>1}]], [[{:name=>"Grape Drink", :price=>1}, {:name=>"Orange Drink", :price=>1}, {:name=>"Pineapple Drink", :price=>1}], [{:name=>"Mints", :price=>13}, {:name=>"Curiously Toxic Mints", :price=>1000}, {:name=>"US Mints", :price=>99}]]]
 ```
 
 We can paste this code into IRB and `vm` will be successfully assigned. There's
 nothing wrong with this code. Ruby can read it easily. But whoever left us this
 file forgot that code has to be understood by humans too. Because it's so
-_dense_ our minds actively start finding ways to _not_ figure out what it says.
-Our brains start suggesting we skip over this monster NDS. In our experience,
-one sure way to have a hard time reading and writing code that uses an NDS is
-to skim it and not read it.
+_dense_, our minds actively start finding ways to _not_ read what it says.  Our
+brains start suggesting we skip over this monster NDS. In our experience, one
+sure way to have a hard time reading and writing code that uses an NDS is to
+skim it and not read it.
 
 So what can we do to help our poor brains out? Ruby (ta-dah!) to the rescue
 (again)!
@@ -50,11 +50,11 @@ We can get a human-friendly version of this output by using the [`pp`][pp], or
 "pretty-print," library provided by Ruby. In order to "activate" `pp`, we have
 to add a `require` statement at the top of the file.
 
-Why do we have to add a `require` statement? Ruby ships with lots of
-features by default. Some of these can slow Ruby down. By default, Ruby only
-"activates" the most-commonly used methods. Some of its features are inactive
-by default and we say we want to "activate" them by using `require`. In time,
-you'll want to use other libraries (debugging libraries, network libraries, etc.).
+Why do we have to add a `require` statement? Ruby ships with lots of features
+by default. Some of these can slow Ruby down. By default, Ruby only "activates"
+the most-commonly-used features. Some of its features are inactive by default
+and we say we want to "activate" them by using `require`. In time, you'll want
+to use other libraries (debugging libraries, network libraries, etc.).
 
 Customarily, `require` statements are stacked at the top of the file.
 
@@ -62,7 +62,7 @@ Customarily, `require` statements are stacked at the top of the file.
 require 'pp'
 
 # Our NDS
-vm = [[[{:name=>"Vanilla Cookies", :pieces=>3}, {:name=>"Pistachio Cookies", :pieces=>3}, {:name=>"Chocolate Cookies", :pieces=>3}, {:name=>"Chocolate Chip Cookies", :pieces=>3}], [{:name=>"Tooth-Melters", :pieces=>12}, {:name=>"Tooth-Destroyers", :pieces=>12}, {:name=>"Enamel Eaters", :pieces=>12}, {:name=>"Dentist's Nighmare", :pieces=>20}], [{:name=>"Gummy Sour Apple", :pieces=>3}, {:name=>"Gummy Apple", :pieces=>5}, {:name=>"Gummy Moldy Apple", :pieces=>1}]], [[{:name=>"Grape Drink", :pieces=>1}, {:name=>"Orange Drink", :pieces=>1}, {:name=>"Pineapple Drink", :pieces=>1}], [{:name=>"Mints", :pieces=>13}, {:name=>"Curiously Toxic Mints", :pieces=>1000}, {:name=>"US Mints", :pieces=>99}]]]
+vm = [[[{:name=>"Vanilla Cookies", :price=>3}, {:name=>"Pistachio Cookies", :price=>3}, {:name=>"Chocolate Cookies", :price=>3}, {:name=>"Chocolate Chip Cookies", :price=>3}], [{:name=>"Tooth-Melters", :price=>12}, {:name=>"Tooth-Destroyers", :price=>12}, {:name=>"Enamel Eaters", :price=>12}, {:name=>"Dentist's Nightmare", :price=>20}], [{:name=>"Gummy Sour Apple", :price=>3}, {:name=>"Gummy Apple", :price=>5}, {:name=>"Gummy Moldy Apple", :price=>1}]], [[{:name=>"Grape Drink", :price=>1}, {:name=>"Orange Drink", :price=>1}, {:name=>"Pineapple Drink", :price=>1}], [{:name=>"Mints", :price=>13}, {:name=>"Curiously Toxic Mints", :price=>1000}, {:name=>"US Mints", :price=>99}]]]
 
 # Some simple things to pp
 a_privateer = ["John", "Paul", "Jones"]
@@ -84,23 +84,23 @@ Output:
 ["John", "Paul", "Jones"]
 42
 [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-[[[{:name=>"Vanilla Cookies", :pieces=>3},
-   {:name=>"Pistachio Cookies", :pieces=>3},
-   {:name=>"Chocolate Cookies", :pieces=>3},
-   {:name=>"Chocolate Chip Cookies", :pieces=>3}],
-  [{:name=>"Tooth-Melters", :pieces=>12},
-   {:name=>"Tooth-Destroyers", :pieces=>12},
-   {:name=>"Enamel Eaters", :pieces=>12},
-   {:name=>"Dentist's Nighmare", :pieces=>20}],
-  [{:name=>"Gummy Sour Apple", :pieces=>3},
-   {:name=>"Gummy Apple", :pieces=>5},
-   {:name=>"Gummy Moldy Apple", :pieces=>1}]],
- [[{:name=>"Grape Drink", :pieces=>1},
-   {:name=>"Orange Drink", :pieces=>1},
-   {:name=>"Pineapple Drink", :pieces=>1}],
-  [{:name=>"Mints", :pieces=>13},
-   {:name=>"Curiously Toxic Mints", :pieces=>1000},
-   {:name=>"US Mints", :pieces=>99}]]]
+[[[{:name=>"Vanilla Cookies", :price=>3},
+   {:name=>"Pistachio Cookies", :price=>3},
+   {:name=>"Chocolate Cookies", :price=>3},
+   {:name=>"Chocolate Chip Cookies", :price=>3}],
+  [{:name=>"Tooth-Melters", :price=>12},
+   {:name=>"Tooth-Destroyers", :price=>12},
+   {:name=>"Enamel Eaters", :price=>12},
+   {:name=>"Dentist's Nightmare", :price=>20}],
+  [{:name=>"Gummy Sour Apple", :price=>3},
+   {:name=>"Gummy Apple", :price=>5},
+   {:name=>"Gummy Moldy Apple", :price=>1}]],
+ [[{:name=>"Grape Drink", :price=>1},
+   {:name=>"Orange Drink", :price=>1},
+   {:name=>"Pineapple Drink", :price=>1}],
+  [{:name=>"Mints", :price=>13},
+   {:name=>"Curiously Toxic Mints", :price=>1000},
+   {:name=>"US Mints", :price=>99}]]]
 ```
 
 As we can see, `pp` has tried to make our structures easier to read _for humans_.
@@ -108,27 +108,27 @@ It doesn't have much to offer when dealing with simple data, but we start to
 see its power with NDS'. Let's focus on the `vm` output. We'll just work with
 the first few lines.
 
-It's a good idea to save the outpout of `pp` into a file. Then we can use our
+It's a good idea to save the output of `pp` into a file. Then we can use our
 editor to reformat the output to help us get a handle on things. We've added
 some comments to show our thought process as we looked at the `pp`'d NDS.
 
 ```text
-[ # outermost structures is an Array
+[ # outermost structure is an Array
   [ #oh, but another one immediately, so it's an AoA
     [ # yet another!? It's an AoAoA where the inner Arrays are full of ..
-      {:name=>"Vanilla Cookies", :pieces=>3}, # Hashes with two keys!
-      {:name=>"Pistachio Cookies", :pieces=>3}, # and another Hash
-      {:name=>"Chocolate Cookies", :pieces=>3}, # and another Hash
-      {:name=>"Chocolate Chip Cookies", :pieces=>3} # and another Hash
+      {:name=>"Vanilla Cookies", :price=>3}, # Hashes with two keys!
+      {:name=>"Pistachio Cookies", :price=>3}, # and another Hash
+      {:name=>"Chocolate Cookies", :price=>3}, # and another Hash
+      {:name=>"Chocolate Chip Cookies", :price=>3} # and another Hash
     ], # end of inner array
     [ #...and so on...
-      {:name=>"Tooth-Melters", :pieces=>12},
-     {:name=>"Tooth-Destroyers", :pieces=>12},
+      {:name=>"Tooth-Melters", :price=>12},
+     {:name=>"Tooth-Destroyers", :price=>12},
 ```
 
 From the above, we've learned a lot about what we're working with. As you
 already know from previous lessons, we have an AoAoAoH with keys `:name` and
-`:pieces`.
+`:price`.
 
 ## Print Out a Complex Nested Data Structure Using Iteration
 
@@ -149,7 +149,7 @@ output as guidance:
 > to be strong as granite with this skill.
 
 ```ruby
-vm = [[[{:name=>"Vanilla Cookies", :pieces=>3}, {:name=>"Pistachio Cookies", :pieces=>3}, {:name=>"Chocolate Cookies", :pieces=>3}, {:name=>"Chocolate Chip Cookies", :pieces=>3}], [{:name=>"Tooth-Melters", :pieces=>12}, {:name=>"Tooth-Destroyers", :pieces=>12}, {:name=>"Enamel Eaters", :pieces=>12}, {:name=>"Dentist's Nighmare", :pieces=>20}], [{:name=>"Gummy Sour Apple", :pieces=>3}, {:name=>"Gummy Apple", :pieces=>5}, {:name=>"Gummy Moldy Apple", :pieces=>1}]], [[{:name=>"Grape Drink", :pieces=>1}, {:name=>"Orange Drink", :pieces=>1}, {:name=>"Pineapple Drink", :pieces=>1}], [{:name=>"Mints", :pieces=>13}, {:name=>"Curiously Toxic Mints", :pieces=>1000}, {:name=>"US Mints", :pieces=>99}]]]
+vm = [[[{:name=>"Vanilla Cookies", :price=>3}, {:name=>"Pistachio Cookies", :price=>3}, {:name=>"Chocolate Cookies", :price=>3}, {:name=>"Chocolate Chip Cookies", :price=>3}], [{:name=>"Tooth-Melters", :price=>12}, {:name=>"Tooth-Destroyers", :price=>12}, {:name=>"Enamel Eaters", :price=>12}, {:name=>"Dentist's Nightmare", :price=>20}], [{:name=>"Gummy Sour Apple", :price=>3}, {:name=>"Gummy Apple", :price=>5}, {:name=>"Gummy Moldy Apple", :price=>1}]], [[{:name=>"Grape Drink", :price=>1}, {:name=>"Orange Drink", :price=>1}, {:name=>"Pineapple Drink", :price=>1}], [{:name=>"Mints", :price=>13}, {:name=>"Curiously Toxic Mints", :price=>1000}, {:name=>"US Mints", :price=>99}]]]
 
 
 row_index = 0
@@ -179,42 +179,42 @@ end
 Produces:
 
 ```text
-Row 0 has [[{:name=>"Vanilla Cookies", :pieces=>3}, {:name=>"Pistachio Cookies", :pieces=>3}, {:name=>"Chocolate Cookies", :pieces=>3}, {:name=>"Chocolate Chip Cookies", :pieces=>3}], [{:name=>"Tooth-Melters", :pieces=>12}, {:name=>"Tooth-Destroyers", :pieces=>12}, {:name=>"Enamel Eaters", :pieces=>12}, {:name=>"Dentist's Nighmare", :pieces=>20}], [{:name=>"Gummy Sour Apple", :pieces=>3}, {:name=>"Gummy Apple", :pieces=>5}, {:name=>"Gummy Moldy Apple", :pieces=>1}]] columns
+Row 0 has [[{:name=>"Vanilla Cookies", :price=>3}, {:name=>"Pistachio Cookies", :price=>3}, {:name=>"Chocolate Cookies", :price=>3}, {:name=>"Chocolate Chip Cookies", :price=>3}], [{:name=>"Tooth-Melters", :price=>12}, {:name=>"Tooth-Destroyers", :price=>12}, {:name=>"Enamel Eaters", :price=>12}, {:name=>"Dentist's Nightmare", :price=>20}], [{:name=>"Gummy Sour Apple", :price=>3}, {:name=>"Gummy Apple", :price=>5}, {:name=>"Gummy Moldy Apple", :price=>1}]] columns
 	Coordinate [0, 0] points to an Array of length 4
-		 (0, 0, 0) is: {:name=>"Vanilla Cookies", :pieces=>3}
-		 (0, 0, 1) is: {:name=>"Pistachio Cookies", :pieces=>3}
-		 (0, 0, 2) is: {:name=>"Chocolate Cookies", :pieces=>3}
-		 (0, 0, 3) is: {:name=>"Chocolate Chip Cookies", :pieces=>3}
+		 (0, 0, 0) is: {:name=>"Vanilla Cookies", :price=>3}
+		 (0, 0, 1) is: {:name=>"Pistachio Cookies", :price=>3}
+		 (0, 0, 2) is: {:name=>"Chocolate Cookies", :price=>3}
+		 (0, 0, 3) is: {:name=>"Chocolate Chip Cookies", :price=>3}
 	Coordinate [0, 1] points to an Array of length 4
-		 (0, 1, 0) is: {:name=>"Tooth-Melters", :pieces=>12}
-		 (0, 1, 1) is: {:name=>"Tooth-Destroyers", :pieces=>12}
-		 (0, 1, 2) is: {:name=>"Enamel Eaters", :pieces=>12}
-		 (0, 1, 3) is: {:name=>"Dentist's Nighmare", :pieces=>20}
+		 (0, 1, 0) is: {:name=>"Tooth-Melters", :price=>12}
+		 (0, 1, 1) is: {:name=>"Tooth-Destroyers", :price=>12}
+		 (0, 1, 2) is: {:name=>"Enamel Eaters", :price=>12}
+		 (0, 1, 3) is: {:name=>"Dentist's Nightmare", :price=>20}
 	Coordinate [0, 2] points to an Array of length 3
-		 (0, 2, 0) is: {:name=>"Gummy Sour Apple", :pieces=>3}
-		 (0, 2, 1) is: {:name=>"Gummy Apple", :pieces=>5}
-		 (0, 2, 2) is: {:name=>"Gummy Moldy Apple", :pieces=>1}
-Row 1 has [[{:name=>"Grape Drink", :pieces=>1}, {:name=>"Orange Drink", :pieces=>1}, {:name=>"Pineapple Drink", :pieces=>1}], [{:name=>"Mints", :pieces=>13}, {:name=>"Curiously Toxic Mints", :pieces=>1000}, {:name=>"US Mints", :pieces=>99}]] columns
+		 (0, 2, 0) is: {:name=>"Gummy Sour Apple", :price=>3}
+		 (0, 2, 1) is: {:name=>"Gummy Apple", :price=>5}
+		 (0, 2, 2) is: {:name=>"Gummy Moldy Apple", :price=>1}
+Row 1 has [[{:name=>"Grape Drink", :price=>1}, {:name=>"Orange Drink", :price=>1}, {:name=>"Pineapple Drink", :price=>1}], [{:name=>"Mints", :price=>13}, {:name=>"Curiously Toxic Mints", :price=>1000}, {:name=>"US Mints", :price=>99}]] columns
 	Coordinate [1, 0] points to an Array of length 3
-		 (1, 0, 0) is: {:name=>"Grape Drink", :pieces=>1}
-		 (1, 0, 1) is: {:name=>"Orange Drink", :pieces=>1}
-		 (1, 0, 2) is: {:name=>"Pineapple Drink", :pieces=>1}
+		 (1, 0, 0) is: {:name=>"Grape Drink", :price=>1}
+		 (1, 0, 1) is: {:name=>"Orange Drink", :price=>1}
+		 (1, 0, 2) is: {:name=>"Pineapple Drink", :price=>1}
 	Coordinate [1, 1] points to an Array of length 3
-		 (1, 1, 0) is: {:name=>"Mints", :pieces=>13}
-		 (1, 1, 1) is: {:name=>"Curiously Toxic Mints", :pieces=>1000}
-		 (1, 1, 2) is: {:name=>"US Mints", :pieces=>99}
+		 (1, 1, 0) is: {:name=>"Mints", :price=>13}
+		 (1, 1, 1) is: {:name=>"Curiously Toxic Mints", :price=>1000}
+		 (1, 1, 2) is: {:name=>"US Mints", :price=>99}
 ```
 
 With this looping code and pretty-printing, we should see how to access all
-those `:pieces` keys that we can sum together to create the total count of
-pieces in the vending machine.  We'll do that work in the next lab. 
+those `:price` keys that we can sum together to create the total value of all
+the snacks in the vending machine.  We'll do that work in the next lab. 
 
 ## Lab
 
-In the following lab, we've provided you a method called `directors_database`
-which provides a bunch of information about movies and their directors. Your
-job is to take the NDS returned by `directors_database` and learn about its
-structure using `pp`. You'll write your solution in `lib/nds_explore.rb`.
+In the lab, we've provided you a method called `directors_database` which
+provides a bunch of information about movies and their directors. Your job is
+to take the NDS returned by `directors_database` and learn about its structure
+using `pp`. You'll write your solution in `lib/nds_explore.rb`.
 
 We've stored the database in a lightly-encrypted format. We've done this to
 help you learn how to learn about an NDS that's too complex for a human mind
