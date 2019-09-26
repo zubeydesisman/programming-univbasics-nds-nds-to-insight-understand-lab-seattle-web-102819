@@ -212,22 +212,17 @@ the snacks in the vending machine.  We'll do that work in the next lab.
 ## Lab
 
 In the lab, we've provided you a method called `directors_database` which
-provides a bunch of information about movies and their directors. Your job is
-to take the NDS returned by `directors_database` and learn about its structure
-using `pp`. You'll write your solution in `lib/nds_explore.rb`.
+provides a nested data structure about movies and their directors.  We've
+stored the database in a lightly-encrypted format. We've done this to help you
+learn how to learn about an NDS that's too complex for a human mind to easily
+grasp. You'll want this skill to be strong as you start writing complex
+programs.
 
-We've stored the database in a lightly-encrypted format. We've done this to
-help you learn how to learn about an NDS that's too complex for a human mind
-to easily grasp. This will be part of your expectations in the "real world."
-
-![Training](https://media.giphy.com/media/E77YW2DDl3cMo/giphy.gif)
-
-Think of the challenge like Obi-Wan and young Luke: by training with the blast
-shield over your eyes, we're teaching you to feel the Force.
-
-Once you understand the data structure, you'll build a method that prints out
-the first director's movie data in the `print_first_directors_movie_titles`
-method.
+In the lab, we're going to run some tests where we'll pass in that database to
+the methods. Your job will to be to write the implementations that satisfy the
+test. In one, you will use the pretty printer. In the other, you'll need to
+extract some data using the standard `Array` and `Hash` methods you know
+already and print it out.
 
 ## Conclusion
 
