@@ -10,14 +10,20 @@ def pretty_print_nds(nds)
 end
 
 
-def print_first_directors_movie_titles
-  first_director = directors_database[0][:movies]
-  #binding.pry
-    i = 0 
-    while i < first_director.length do
+# def print_first_directors_movie_titles
+#   first_director = directors_database[0][:movies]
+#   #binding.pry
+#     i = 0 
+#     while i < first_director.length do
       
-      print first_director[i][:title] + "\n"
-      #binding.pry
-      i += 1 
-  end
-end
+#       print first_director[i][:title] + "\n"
+#       #binding.pry
+#       i += 1 
+#   end
+# end
+ def print_first_directors_movie_titles
+   first_director = directors_database[0][:movies]
+   for i in first_director do
+     print i[:title] + "\n"
+   end
+ end
