@@ -24,6 +24,6 @@ end
  def print_first_directors_movie_titles
    first_director = directors_database[0][:movies]
    for i in first_director do
-     print i[:titles] + "\n"
+     print i[:title] + "\n"
    end
  end
